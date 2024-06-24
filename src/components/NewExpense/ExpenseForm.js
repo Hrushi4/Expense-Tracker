@@ -19,6 +19,14 @@ const ExpenseForm = (props) => {
     setEnteredDate(event.target.value);
   };
 
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -60,7 +68,7 @@ const ExpenseForm = (props) => {
           <input
             type="date"
             min="2019-01-01"
-            max="2022-12-31"
+            max={getCurrentDate()}
             value={enteredDate}
             onChange={dateChangeHandler}
           />
